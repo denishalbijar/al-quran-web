@@ -1,0 +1,282 @@
+/* Reset & dasar */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fffde7, #f1f8e9);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-size: 16px;
+  }
+  header {
+    background: linear-gradient(90deg, #4caf50, #388e3c);
+    color: #fff;
+    padding: 1.25rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .toggle-sidebar {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+  }
+  .container {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+  /* Sidebar */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background-color: #e8f5e9;
+    padding: 1rem;
+    border-right: 1px solid #ccc;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 60px; /* Sesuaikan dengan tinggi header */
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+  #surahList {
+    flex: 1;
+  }
+  .sidebar.hidden {
+    transform: translateX(-100%);
+  }
+  .sidebar input {
+    width: 100%;
+    padding: 0.625rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    flex: none;
+  }
+  .surah-item {
+    background-color: #c8e6c9;
+    border-radius: 8px;
+    padding: 0.625rem;
+    margin-bottom: 0.625rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .surah-item:hover {
+    background-color: #a5d6a7;
+    transform: translateX(5px);
+  }
+  /* Detail konten */
+  .detail {
+    flex: 1;
+    padding: 1.25rem;
+    overflow-y: auto;
+  }
+  /* Tombol Murottal & Player */
+  #murottal-container {
+    margin-bottom: 1.25rem;
+  }
+  #murottal-btn {
+    background-color: #ffeb3b;
+    color: #4caf50;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: 500;
+  }
+  #murottal-btn:hover {
+    background-color: #fdd835;
+  }
+  /* Custom Murottal Player (seperti music player) */
+  #murottal-player {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  #murottal-player.open {
+    max-height: 120px;
+  }
+  #murottal-player button {
+    padding: 0.375rem 0.625rem;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+  }
+  #murottal-player button:hover {
+    background-color: #43a047;
+  }
+  #murottal-progress {
+    flex: 1;
+  }
+  /* Styling select dropdown "Pilih Ayat" */
+  #ayahDropdown {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.625rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+    background-color: #fff;
+  }
+  @media (max-width: 480px) {
+    #ayahDropdown {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+  }
+  .ayah-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .ayah-number {
+    font-weight: 600;
+    margin-bottom: 0.625rem;
+  }
+  .arabic {
+    font-size: 1.8rem;
+    text-align: right;
+    margin: 0.625rem 0;
+    direction: rtl;
+  }
+  .latin,
+  .translation {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+  }
+  .bismillah {
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 1.25rem 0;
+    font-style: italic;
+    color: #555;
+  }
+  /* Kontrol Umum */
+  .controls {
+    margin-top: 0.625rem;
+    display: flex;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .controls button {
+    background-color: #ffeb3b;
+    color: #4caf50;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: 500;
+  }
+  .controls button:hover {
+    background-color: #fdd835;
+  }
+  /* Dropdown Share */
+  .share-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .share-dropdown .share-options {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    min-width: 140px;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .share-dropdown .share-options button {
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+    padding: 0.5rem 0.625rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .share-dropdown .share-options button:hover {
+    background: #f0f0f0;
+  }
+  /* Custom Audio Player per ayat */
+  .audio-player {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: #e0f2f1;
+    border: 1px solid #b2dfdb;
+    border-radius: 8px;
+    margin-bottom: 0.625rem;
+  }
+  .audio-player button {
+    padding: 0.375rem 0.625rem;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+  }
+  .audio-player button:hover {
+    background-color: #43a047;
+  }
+  .audio-player input[type="range"] {
+    flex: 1;
+    margin: 0 0.5rem;
+  }
+  .audio-player span {
+    white-space: nowrap;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .sidebar {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 200;
+      width: 80%;
+      height: 100vh;
+    }
+    .toggle-sidebar { display: block; }
+    .container {
+      position: relative;
+      flex-direction: column;
+    }
+    .detail { padding: 1rem; }
+  }
