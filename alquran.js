@@ -181,8 +181,9 @@ function renderSurahDetail(data) {
         window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
       } else if (platform === 'fb') {
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(text)}`, '_blank');
-      } else if (platform === 'tw') {
-        window.open(`https://twitter.com/intend/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`, '_blank');
+      // Bagian share option untuk Twitter
+      }else if (platform === 'tw') {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`, '_blank');
       } else if (platform === 'email') {
         window.location.href = `mailto:?subject=Ayat Quran&body=${encodeURIComponent(text + '\n' + window.location.href)}`;
       } else if (platform === 'others') {
