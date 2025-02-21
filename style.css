@@ -1,0 +1,331 @@
+/* Reset & dasar */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  color: #333;
+  min-height: 100vh;
+  font-size: 16px;
+  line-height: 1.6;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* Header */
+header {
+  background: linear-gradient(90deg, #4caf50, #2e7d32);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+header h1 {
+  font-size: 1.5rem;
+  flex: 1;
+  text-align: center;
+  letter-spacing: 1px;
+}
+header button#backBtn {
+  background: #ffeb3b;
+  color: #2e7d32;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: 600;
+  display: none;
+}
+header button#backBtn:hover {
+  background: #fdd835;
+}
+/* Surah Container */
+.surah-container {
+  padding: 1rem;
+  background-color: #e8f5e9;
+  border-bottom: 1px solid #c8e6c9;
+}
+.surah-container input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+.surah-container input:focus {
+  border-color: #66bb6a;
+}
+.surah-buttons {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.surah-button {
+  flex: 0 0 auto;
+  background-color: #a5d6a7;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.surah-button:hover {
+  background-color: #81c784;
+  transform: translateY(-2px);
+}
+/* Main Detail / Dashboard */
+main.detail {
+  padding: 1.5rem;
+  background: #fff;
+  margin: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+main.detail h2 {
+  margin-bottom: 1rem;
+  color: #2e7d32;
+  text-align: center;
+}
+.bismillah {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 1.25rem 0;
+  font-style: italic;
+  color: #555;
+}
+/* Tombol Murottal & Player */
+#murottal-container {
+  margin-bottom: 1.25rem;
+}
+#murottal-btn {
+  background-color: #ffeb3b;
+  color: #2e7d32;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: 600;
+  display: block;
+  margin: 0 auto 1rem;
+}
+#murottal-btn:hover {
+  background-color: #fdd835;
+}
+#murottal-player {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+#murottal-player.open {
+  max-height: 120px;
+}
+#murottal-player button {
+  padding: 0.5rem 0.75rem;
+  background-color: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 0.9rem;
+}
+#murottal-player button:hover {
+  background-color: #1b5e20;
+}
+#murottal-progress {
+  flex: 1;
+}
+/* Dropdown Pilih Ayat */
+#ayahDropdown {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  background-color: #fff;
+}
+@media (max-width: 480px) {
+  #ayahDropdown {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+}
+/* Ayat Container */
+.ayah-container {
+  background: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  transition: transform 0.2s ease;
+}
+.ayah-container:hover {
+  transform: translateY(-2px);
+}
+.ayah-number {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2e7d32;
+}
+.arabic {
+  font-size: 1.8rem;
+  text-align: right;
+  margin: 0.5rem 0;
+  direction: rtl;
+  color: #424242;
+}
+.latin,
+.translation {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+  color: #616161;
+}
+/* Kontrol Umum */
+.controls {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+.controls button {
+  background-color: #ffeb3b;
+  color: #2e7d32;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: 600;
+}
+.controls button:hover {
+  background-color: #fdd835;
+}
+/* Dropdown Share */
+.share-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.share-dropdown .share-options {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  min-width: 140px;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.share-dropdown .share-options button {
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.share-dropdown .share-options button:hover {
+  background: #f5f5f5;
+}
+/* Custom Audio Player per ayat */
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #e0f2f1;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+.audio-player button {
+  padding: 0.5rem 0.75rem;
+  background-color: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 0.9rem;
+}
+.audio-player button:hover {
+  background-color: #1b5e20;
+}
+.audio-player input[type="range"] {
+  flex: 1;
+  margin: 0 0.5rem;
+}
+.audio-player span {
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+/* Dashboard Bookmark */
+.dashboard-section {
+  margin-bottom: 1.5rem;
+}
+.dashboard-section h3 {
+  margin-bottom: 0.5rem;
+  color: #2e7d32;
+}
+.dashboard-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+.dashboard-section ul li a {
+  color: #2e7d32;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  display: block;
+  transition: background 0.3s ease;
+}
+.dashboard-section ul li a:hover {
+  background: #e8f5e9;
+  border-radius: 4px;
+}
+/* Navigasi Bottom */
+.surah-navigation-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.surah-navigation-bottom button {
+  background-color: #a5d6a7;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-weight: 500;
+}
+.surah-navigation-bottom button:hover {
+  background-color: #81c784;
+  transform: translateY(-2px);
+}
