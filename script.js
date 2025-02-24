@@ -62,17 +62,54 @@ function loadSurahList() {
     });
 }
 
+// Render daftar surah dengan bookmark button untuk setiap item
 function renderSurahList(surahs) {
   surahButtonsEl.innerHTML = '';
   surahs.forEach(surah => {
-    const btn = document.createElement('button');
-    btn.className = 'surah-button';
-    btn.textContent = `${surah.nomor}. ${surahNamesID[surah.nomor] || surah.nama}`;
-    btn.addEventListener('click', () => {
+    const surahItem = document.createElement('div');
+    surahItem.className = 'surah-item';
+
+    // Tombol untuk membuka detail surah
+    const detailBtn = document.createElement('button');
+    detailBtn.className = 'surah-button';
+    detailBtn.textContent = `${surah.nomor}. ${surahNamesID[surah.nomor] || surah.nama}`;
+    detailBtn.addEventListener('click', () => {
       loadSurahDetail(surah.nomor);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-    surahButtonsEl.appendChild(btn);
+    surahItem.appendChild(detailBtn);
+
+    // Tombol bookmark
+    const bookmarkBtn = document.createElement('button');
+    bookmarkBtn.className = 'bookmark-surah-list';
+    bookmarkBtn.setAttribute('data-surah', surah.nomor);
+    bookmarkBtn.setAttribute('data-title', surahNamesID[surah.nomor] || surah.nama);
+    // Cek status bookmark
+    let bookmarks = getBookmarks();
+    const isBookmarked = bookmarks.surahs.some(b => b.surah == surah.nomor);
+    bookmarkBtn.textContent = isBookmarked ? '★' : '☆';
+    bookmarkBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      let bookmarks = getBookmarks();
+      const index = bookmarks.surahs.findIndex(b => b.surah == surah.nomor);
+      if(index === -1) {
+        bookmarks.surahs.push({ surah: surah.nomor, title: surahNamesID[surah.nomor] || surah.nama });
+        bookmarkBtn.textContent = '★';
+        alert('Surah dibookmark');
+      } else {
+        bookmarks.surahs.splice(index, 1);
+        bookmarkBtn.textContent = '☆';
+        alert('Bookmark surah dihapus');
+      }
+      saveBookmarks(bookmarks);
+      // Jika tampilan dashboard bookmark sedang aktif (backBtn tidak terlihat), perbarui dashboard secara otomatis
+      if (backBtn.style.display === 'none') {
+        showDashboard();
+      }
+    });
+    surahItem.appendChild(bookmarkBtn);
+
+    surahButtonsEl.appendChild(surahItem);
   });
 }
 
@@ -246,7 +283,7 @@ function renderSurahDetail(data) {
     }
   });
 
-  // Toggle Bookmark Surah
+  // Toggle Bookmark Surah (di detail view)
   document.getElementById('bookmarkSurah').addEventListener('click', function(){
     const bookmarks = getBookmarks();
     const index = bookmarks.surahs.findIndex(b => b.surah == data.nomor);
